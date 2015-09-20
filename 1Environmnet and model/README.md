@@ -1,4 +1,4 @@
-# 第一章 JavaScript 的编程环境和模型
+# 第1章 JavaScript 的编程环境和模型
 
 ## 1.1 JavaScript 环境
 
