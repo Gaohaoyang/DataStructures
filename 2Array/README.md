@@ -215,6 +215,35 @@ JavaScript 只支持一维数组，二维数组使用数组里保存数组的方
 
 ### 2.6.1 创建二维数组
 
+首先创建一个数组，然后让数组的每一个元素也是一个数组。至少要知道多少行，就可以创建一个 n 行 1 列的二维数组了。
+
+    var two = [];
+    var rows = 5;
+    for (var i = 0; i < rows; i++) {
+        two[i] = [];
+    }
+
+可以扩展 JavaScript 数组对象，为其增加一个方法，参数为行数、列数和初始值。
+
+    /**
+     * 定义二维数组
+     * @param  {Number} numrows 行数
+     * @param  {Number} numcols 列数
+     * @param  {Any}    initial 初始值
+     * @return {Array}          二维数组
+     */
+    Array.matrix = function(numrows,numcols,initial) {
+        var arr = [];
+        for (var i = 0; i < numrows; i++) {
+            var columns = [];
+            for (var j = 0; j < numcols; j++) {
+                columns[j] = initial;
+            }
+            arr[i] = columns;
+        }
+        return arr;
+    };
+
 ### 2.6.2 处理二维数组的元素
 
 ### 2.6.3 参差不齐的数组
@@ -227,4 +256,5 @@ JavaScript 只支持一维数组，二维数组使用数组里保存数组的方
 
 
 [上一章 第1章 JavaScript 的编程环境和模型](../1Environmnet and model)
+
 [下一章 第3章 列表](../3List)

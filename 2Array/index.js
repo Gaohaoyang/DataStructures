@@ -75,3 +75,29 @@ console.log(nums.reduce(add)); // 55
 // 对于字符串数组，可以连接
 var strArr = ['I', 'Love', 'Ying', 'ying'];
 console.log(strArr.reduce(add)); // ILoveYingying
+
+
+var two = [];
+var rows = 5;
+for (var i = 0; i < rows; i++) {
+    two[i] = [];
+}
+
+/**
+ * 定义二维数组
+ * @param  {Number} numrows 行数
+ * @param  {Number} numcols 列数
+ * @param  {Any}    initial 初始值
+ * @return {Array}          二维数组
+ */
+Array.matrix = function(numrows,numcols,initial) {
+    var arr = [];
+    for (var i = 0; i < numrows; i++) {
+        var columns = [];
+        for (var j = 0; j < numcols; j++) {
+            columns[j] = initial;
+        }
+        arr[i] = columns;
+    }
+    return arr;
+};
