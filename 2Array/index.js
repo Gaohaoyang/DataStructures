@@ -35,10 +35,14 @@ console.log(nums.sort(compare)); // [2, 3, 6, 15, 100]
 
 
 function square(n) {
-    console.log(n, n * n);
+    return (n, n * n);
 }
 var nums = [1, 2, 3, 4, 5, 6, 7];
-nums.forEach(square);
+var nums2 = nums.map(square);
+console.log(nums); // [1, 2, 3, 4, 5, 6, 7]
+console.log(nums2); // [1, 4, 9, 16, 25, 36, 49]
+
+
 /*
 1 1
 2 4
@@ -52,12 +56,22 @@ nums.forEach(square);
 function isEven(n) {
     return n % 2 === 0;
 }
-var nums = [2,4,6,8,10];
+var nums = [2, 4, 6, 8, 10];
 console.log(nums.every(isEven)); // true
-var nums = [2,4,6,8,1];
+var nums = [2, 4, 6, 8, 1];
 console.log(nums.every(isEven)); // false
 
-var nums = [1,3,5,7,9];
+var nums = [1, 3, 5, 7, 9];
 console.log(nums.some(isEven)); // false
-var nums = [2,3,5,7,9];
+var nums = [2, 3, 5, 7, 9];
 console.log(nums.some(isEven)); // true
+
+function add(n1, n2) {
+    return n1 + n2;
+}
+var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(nums.reduce(add)); // 55
+
+// 对于字符串数组，可以连接
+var strArr = ['I', 'Love', 'Ying', 'ying'];
+console.log(strArr.reduce(add)); // ILoveYingying
