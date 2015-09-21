@@ -1,4 +1,5 @@
 # DataStructures
+
 Data Structures and Algorithms with JavaScript
 
 * [第1章 JavaScript 的编程环境和模型](1Environmnet and model)
