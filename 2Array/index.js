@@ -103,9 +103,10 @@ Array.matrix = function(numrows, numcols, initial) {
 };
 
 // test
-var nums = Array.matrix(3,3,1);
+var nums = Array.matrix(3, 3, 1);
 for (var i = 0; i < nums.length; i++) {
     for (var j = 0; j < nums[i].length; j++) {
         console.log(nums[i][j]);
     }
 }
+test
