@@ -10,17 +10,130 @@
 
 列表的抽象数据类型并未指明列表的存储结构，我们使用数组来存储元素。
 
+* 列表的属性
+    
+    名称 | 描述
+    --- | ---
+    listSize | 列表的元素个数
+    pos | 列表的当前位置
+    length | 返回列表中元素的个数
+
+* 列表的方法
+
+    名称 | 描述
+    ---|---
+    clear | 清空列表中的所有元素
+    toString | 返回列表的字符串形式
+    getElement | 返回当前位置的元素
+    insert | 在现有元素后插入新元素
+    append | 在列表的末尾添加新元素
+    remove | 从列表中删除元素
+    front | 将列表的当前位置移动到第一个元素
+    end | 将列表的当前位置移动到最后一个元素
+    prev | 将当前位置后移一位
+    next | 将当前位置前移一位
+    currPos | 返回列表的当前位置
+    moveTo | 将当前位置移动到指定位置
+
+
 ## 3.2 实现列表类
+
+```js
+function List() {
+    this.listSize = 0;
+    this.pos = 0;
+    this.dataStore = [];
+    this.clear = clear;
+    this.find = find;
+    this.toString = toString;
+    this.insert = insert;
+    this.append = append;
+    this.remove = remove;
+    this.front = front;
+    this.end = end;
+    this.prev = prev;
+    this.next = next;
+    this.length = length;
+    this.currPos = currPos;
+    this.getElement = getElement;
+    this.contains = contains;
+}
+```
 
 ### 3.2.1 append：给列表添加元素
 
-### 3.2.2 remove：从列表中删除元素
+```js
+/**
+ * append 在列表末尾添加元素
+ * @param  {element} element 要添加的元素
+ */
+function append(element) {
+    this.dataStore[this.listSize++] = element;
+}
+```
 
-### 3.2.3 find：在列表中查找某一元素
+### 3.2.2 find：在列表中查找某一元素
+
+```js
+/**
+ * find 查找元素
+ * @param  {element} element 要查找的元素
+ * @return {Number}         查到，返回索引；未查到，返回-1
+ */
+function find(element) {
+    for (var i = 0; i < this.dataStore.length; i++) {
+        if (this.dataStore[i] == element) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+### 3.2.3 remove：从列表中删除元素
+
+`remove()` 使用 `find()` 方法返回的位置对数组 dateStore 进行截取。数组改变后，将变量 listSize 的值减 1，以反映列表的最新长度。
+
+```js
+/**
+ * remove 删除元素
+ * @param  {element} element 要删除的元素
+ * @return {Boolean}         删除成功，返回 true，不成功返回 false
+ */
+function remove(element) {
+    var foundAt = this.find(element);
+    if (foundAt > -1) {
+        this.dataStore.splice(foundAt, 1);
+        this.listSize--;
+        return true;
+    }
+    return false;
+}
+```
 
 ### 3.2.4 length：列表中有多少个元素
 
+```js
+/**
+ * length 元素个数
+ * @return {Number} 列表长度
+ */
+function length() {
+    return this.listSize;
+}
+```
+
 ### 3.2.5 toString：显示列表中的元素
+
+```js
+/**
+ * toString
+ * @return {Array} 显示当前列表
+ */
+function toString() {
+    return this.dataStore;
+}
+```
 
 ### 3.2.6 insert：向列表中插入一个元素
 
