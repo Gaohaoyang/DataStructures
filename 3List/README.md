@@ -137,11 +137,98 @@ function toString() {
 
 ### 3.2.6 insert：向列表中插入一个元素
 
+先找到位置，再使用 `splice()` 操作，同时 `listSize` 加1。
+
+```js
+/**
+ * insert 插入
+ * @param  {element} element 待插入的元素
+ * @param  {element} after   在after之后插入元素
+ * @return {Boolean}         插入成功，true，不成功false
+ */
+function insert(element, after) {
+    var insertPos = this.find(after);
+    if (insertPos > -1) {
+        this.dataStore.splice(insertPos + 1, 0, element);
+        this.listSize++;
+        return true;
+    }
+    return false;
+}
+```
+
 ### 3.2.7 clear：清空列表中所有的元素
+
+```js
+/**
+ * clear 清空
+ */
+function clear() {
+    delete this.dataStore;
+    this.dataStore = [];
+    this.listSize = this.pos = 0;
+}
+```
 
 ### 3.2.8 contains：判断给定值是否在列表中
 
+```js
+/**
+ * contains 是否包含
+ * @param  {element} element 查找的元素
+ * @return {Boolean}
+ */
+function contains(element) {
+    for (var i = 0; i < this.dataStore.length; i++) {
+        if (this.dataStore[i] == element) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
 ### 3.2.9 遍历列表
+
+```js
+/**
+ * front
+ */
+function front() {
+    this.pos = 0;
+}
+
+/**
+ * end
+ */
+function end() {
+    this.pos = this.listSize - 1;
+}
+
+function next() {
+    if (this.pos < this.listSize - 1) {
+        this.pos++;
+    }
+}
+
+function prev() {
+    if (this.pos > -1) {
+        this.pos--;
+    }
+}
+
+function currPos() {
+    return this.pos;
+}
+
+function moveTo(postion) {
+    this.pos = postion;
+}
+
+function getElement() {
+    return this.dataStore[this.pos];
+}
+```
 
 ## 3.3 使用迭代器访问列表
 

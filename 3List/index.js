@@ -7,20 +7,20 @@ function List() {
     this.listSize = 0;
     this.pos = 0;
     this.dataStore = [];
-    // this.clear = clear;
+    this.clear = clear;
     this.find = find;
     this.toString = toString;
-    // this.insert = insert;
+    this.insert = insert;
     this.append = append;
     this.remove = remove;
-    // this.front = front;
-    // this.end = end;
-    // this.prev = prev;
-    // this.next = next;
+    this.front = front;
+    this.end = end;
+    this.prev = prev;
+    this.next = next;
     this.length = length;
-    // this.currPos = currPos;
-    // this.getElement = getElement;
-    // this.contains = contains;
+    this.currPos = currPos;
+    this.getElement = getElement;
+    this.contains = contains;
 }
 
 /**
@@ -76,7 +76,82 @@ function toString() {
     return this.dataStore;
 }
 
+/**
+ * insert 插入
+ * @param  {element} element 待插入的元素
+ * @param  {element} after   在after之后插入元素
+ * @return {Boolean}         插入成功，true，不成功false
+ */
+function insert(element, after) {
+    var insertPos = this.find(after);
+    if (insertPos > -1) {
+        this.dataStore.splice(insertPos + 1, 0, element);
+        this.listSize++;
+        return true;
+    }
+    return false;
+}
 
+/**
+ * clear 清空
+ */
+function clear() {
+    delete this.dataStore;
+    this.dataStore = [];
+    this.listSize = this.pos = 0;
+}
+
+/**
+ * contains 是否包含
+ * @param  {element} element 查找的元素
+ * @return {Boolean}
+ */
+function contains(element) {
+    for (var i = 0; i < this.dataStore.length; i++) {
+        if (this.dataStore[i] == element) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * front
+ */
+function front() {
+    this.pos = 0;
+}
+
+/**
+ * end
+ */
+function end() {
+    this.pos = this.listSize - 1;
+}
+
+function next() {
+    if (this.pos < this.listSize - 1) {
+        this.pos++;
+    }
+}
+
+function prev() {
+    if (this.pos > -1) {
+        this.pos--;
+    }
+}
+
+function currPos() {
+    return this.pos;
+}
+
+function moveTo(postion) {
+    this.pos = postion;
+}
+
+function getElement() {
+    return this.dataStore[this.pos];
+}
 
 // test
 var list = new List();
@@ -91,4 +166,6 @@ console.log(list.find('gao'));
 console.log('listSize-->' + list.length());
 console.log(list.remove('gao'));
 console.log('listSize-->' + list.length());
+console.log(list.toString());
+list.insert('gaohaoyang', 9);
 console.log(list.toString());
