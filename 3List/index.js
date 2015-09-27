@@ -130,7 +130,7 @@ function end() {
 }
 
 function next() {
-    if (this.pos < this.listSize - 1) {
+    if (this.pos < this.listSize) {
         this.pos++;
     }
 }
@@ -171,19 +171,27 @@ console.log(list.toString());
 list.insert('gaohaoyang', 9);
 console.log(list.toString());
 
-list.front();
-console.log(list.getElement());
-list.next();
-console.log(list.getElement());
-list.next();
-list.next();
-list.prev();
-console.log(list.getElement());
-console.log(list.currPos());
-console.log(list.length());
-list.next();
-console.log(list.currPos());
+// list.front();
+// console.log(list.getElement());
+// list.next();
+// console.log(list.getElement());
+// list.next();
+// list.next();
+// list.prev();
+// console.log(list.getElement());
+// console.log(list.currPos());
+// console.log(list.length());
+// list.next();
+// console.log(list.currPos());
+
+
 // 使用迭代器访问列表
-// for (list.front(); list.currPos() < list.length(); list.next()) {
-//     console.log(list.getElement());
-// }
+// 从前向后遍历
+for (list.front(); list.currPos() < list.length(); list.next()) {
+    console.log(list.getElement());
+}
+
+// 从后向前遍历
+for (list.end(); list.currPos() >= 0; list.prev()) {
+    console.log(list.getElement());
+}

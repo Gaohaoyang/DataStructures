@@ -206,7 +206,7 @@ function end() {
 }
 
 function next() {
-    if (this.pos < this.listSize - 1) {
+    if (this.pos < this.listSize) {
         this.pos++;
     }
 }
@@ -232,8 +232,23 @@ function getElement() {
 
 ## 3.3 使用迭代器访问列表
 
+```js
+// 使用迭代器访问列表
+// 从前向后遍历
+for (list.front(); list.currPos() < list.length(); list.next()) {
+    console.log(list.getElement());
+}
 
+// 从后向前遍历
+for (list.end(); list.currPos() >= 0; list.prev()) {
+    console.log(list.getElement());
+}
+```
 
 ## 3.4 一个基于列表的应用
+
+### 3.4.1 读取文本文件
+
+### 3.4.2 使用列表管理影碟租赁
 
 ## 3.5 练习
