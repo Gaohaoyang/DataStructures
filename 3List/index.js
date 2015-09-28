@@ -195,3 +195,4 @@ for (list.front(); list.currPos() < list.length(); list.next()) {
 for (list.end(); list.currPos() >= 0; list.prev()) {
     console.log(list.getElement());
 }
+
