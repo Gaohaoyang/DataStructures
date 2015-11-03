@@ -12,19 +12,23 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
 ### 2.2.1 创建数组
 
-    var arr1 = [];
+```js
+var arr1 = [];
 
-    var arr2 = [1,2,3,4];
+var arr2 = [1,2,3,4];
 
-    var arr3 = new Array();
+var arr3 = new Array();
 
-    var arr4 = new Array(1,2,3,4);
+var arr4 = new Array(1,2,3,4);
 
-    var arr5 = new Array(4); // 数组长度
+var arr5 = new Array(4); // 数组长度
+```
 
 判断是否是数组
 
-    Array.isArray(arr1);
+```js
+Array.isArray(arr1);
+```
     
 推荐使用 `[]` 创建数组，被认为效率更高。
 
@@ -42,25 +46,30 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
     直接赋值，如下
 
-        var nums = [1,2,3];
-        var samenums = nums;
+```js
+var nums = [1,2,3];
+var samenums = nums;
+```
 
-    被赋值的数组增加了一个新的引用。当改变原引用的值时，另一个引用也会感知变化。
+
+被赋值的数组增加了一个新的引用。当改变原引用的值时，另一个引用也会感知变化。
 
 * 深复制
 
     将原数组中的每一个元素都赋值一份到新数组中。
 
-        /**
-         * 深复制
-         * @param  {Array} arr1 已知数组
-         * @param  {Array} arr2 新数组
-         */
-        function copy(arr1, arr2) {
-            for (var i = 0; i < arr1.length; i++) {
-                arr2[i] = arr1[i];
-            }
-        }
+```js
+/**
+ * 深复制
+ * @param  {Array} arr1 已知数组
+ * @param  {Array} arr2 新数组
+ */
+function copy(arr1, arr2) {
+    for (var i = 0; i < arr1.length; i++) {
+        arr2[i] = arr1[i];
+    }
+}
+```
 
 ## 2.3 存取函数
 
@@ -114,13 +123,14 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
 例：
 
-    var nums = [1,2,5,6];
-    nums.splice(2,0,3,4);
-    console.log(nums); // [1, 2, 3, 4, 5, 6]
+```js
+var nums = [1,2,5,6];
+nums.splice(2,0,3,4);
+console.log(nums); // [1, 2, 3, 4, 5, 6]
 
-    nums.splice(1,2);
-    console.log(nums); // [1, 4, 5, 6]
-
+nums.splice(1,2);
+console.log(nums); // [1, 4, 5, 6]
+```
 
 ### 2.4.4 为数组排序
 
@@ -130,12 +140,14 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
     比较函数，例：
 
-        // 比较函数
-        function compare(n1,n2) {
-            return n1 - n2;
-        }
-        var nums = [3,2,100,15,6];
-        console.log(nums.sort(compare)); // [2, 3, 6, 15, 100]
+```js
+// 比较函数
+function compare(n1,n2) {
+    return n1 - n2;
+}
+var nums = [3,2,100,15,6];
+console.log(nums.sort(compare)); // [2, 3, 6, 15, 100]
+```
 
 ## 2.5 迭代器方法
 
@@ -145,49 +157,57 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
 * `forEach()` 参数为一个函数，对数组的每一个元素应用该函数。
 
-        function square(n) {
-            console.log(n, n * n);
-        }
-        var nums = [1, 2, 3, 4, 5, 6, 7];
-        nums.forEach(square);
-        /*
-        1 1
-        2 4
-        3 9
-        4 16
-        5 25
-        6 36
-        7 49
-        */
+```js
+function square(n) {
+    console.log(n, n * n);
+}
+var nums = [1, 2, 3, 4, 5, 6, 7];
+nums.forEach(square);
+/*
+1 1
+2 4
+3 9
+4 16
+5 25
+6 36
+7 49
+*/
+```
 
 * `every()` 接受一个返回值为布尔类型的函数，对数组中的每一个元素使用该函数。如果对于多有元素，改函数返回 `true`，则该方法返回 `true`。
 
-        function isEven(n) {
-            return n % 2 === 0;
-        }
-        var nums = [2,4,6,8,10];
-        console.log(nums.every(isEven)); // true
-        var nums = [2,4,6,8,1];
-        console.log(nums.every(isEven)); // false
+```js
+function isEven(n) {
+    return n % 2 === 0;
+}
+var nums = [2,4,6,8,10];
+console.log(nums.every(isEven)); // true
+var nums = [2,4,6,8,1];
+console.log(nums.every(isEven)); // false
+```
 
 * `some()` 也接受一个返回值为布尔类型的函数，只要有一个元素使得该函数返回 `true`，该方法就返回 `true`。
 
-        var nums = [1,3,5,7,9];
-        console.log(nums.some(isEven)); // false
-        var nums = [2,3,5,7,9];
-        console.log(nums.some(isEven)); // true
+```js
+var nums = [1,3,5,7,9];
+console.log(nums.some(isEven)); // false
+var nums = [2,3,5,7,9];
+console.log(nums.some(isEven)); // true
+```
 
 * `reduce()` 参数接受一个函数，返回一个值。该方法会从一个累加值开始，不断对累加值和数组中的后续元素调用该函数，知道数组中的最后一个元素，最后返回得到的累加值。
 
-        function add(n1, n2) {
-            return n1 + n2;
-        }
-        var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        console.log(nums.reduce(add)); // 55
+```js
+function add(n1, n2) {
+    return n1 + n2;
+}
+var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(nums.reduce(add)); // 55
 
-        // 对于字符串数组，可以连接
-        var strArr = ['I', 'Love', 'Ying', 'ying'];
-        console.log(strArr.reduce(add)); // ILoveYingying
+// 对于字符串数组，可以连接
+var strArr = ['I', 'Love', 'Ying', 'ying'];
+console.log(strArr.reduce(add)); // ILoveYingying
+```
 
 * `reduceRight()` 和 `reduce()` 方法不同的是，它是从右到左执行。
 
@@ -197,13 +217,15 @@ JavaScript 中的数组是一种特殊对象。其数字索引在内部被转换
 
 * `map()` 和 `forEach()` 有点像，却别是 `map()` 返回一个新数组，不改变原数组。
 
-        function square(n) {
-            return (n, n * n);
-        }
-        var nums = [1, 2, 3, 4, 5, 6, 7];
-        var nums2 = nums.map(square);
-        console.log(nums); // [1, 2, 3, 4, 5, 6, 7]
-        console.log(nums2); // [1, 4, 9, 16, 25, 36, 49]
+```js
+function square(n) {
+    return (n, n * n);
+}
+var nums = [1, 2, 3, 4, 5, 6, 7];
+var nums2 = nums.map(square);
+console.log(nums); // [1, 2, 3, 4, 5, 6, 7]
+console.log(nums2); // [1, 4, 9, 16, 25, 36, 49]
+```
 
 * `filter()` 和 `every()` 类似，传入一个返回值为布尔类型的函数。和 every() 不同的是，当对数组中的所有元素应用该函数，结果均为 true 时，该方法并不返回 true，而是返回一个新数组，该数组包含应用该函数后结果为 true 的元素。
 
@@ -217,32 +239,36 @@ JavaScript 只支持一维数组，二维数组使用数组里保存数组的方
 
 首先创建一个数组，然后让数组的每一个元素也是一个数组。至少要知道多少行，就可以创建一个 n 行 1 列的二维数组了。
 
-    var two = [];
-    var rows = 5;
-    for (var i = 0; i < rows; i++) {
-        two[i] = [];
-    }
+```js
+var two = [];
+var rows = 5;
+for (var i = 0; i < rows; i++) {
+    two[i] = [];
+}
+```
 
 可以扩展 JavaScript 数组对象，为其增加一个方法，参数为行数、列数和初始值。
 
-    /**
-     * 定义二维数组
-     * @param  {Number} numrows 行数
-     * @param  {Number} numcols 列数
-     * @param  {Any}    initial 初始值
-     * @return {Array}          二维数组
-     */
-    Array.matrix = function(numrows,numcols,initial) {
-        var arr = [];
-        for (var i = 0; i < numrows; i++) {
-            var columns = [];
-            for (var j = 0; j < numcols; j++) {
-                columns[j] = initial;
-            }
-            arr[i] = columns;
+```js
+/**
+ * 定义二维数组
+ * @param  {Number} numrows 行数
+ * @param  {Number} numcols 列数
+ * @param  {Any}    initial 初始值
+ * @return {Array}          二维数组
+ */
+Array.matrix = function(numrows,numcols,initial) {
+    var arr = [];
+    for (var i = 0; i < numrows; i++) {
+        var columns = [];
+        for (var j = 0; j < numcols; j++) {
+            columns[j] = initial;
         }
-        return arr;
-    };
+        arr[i] = columns;
+    }
+    return arr;
+};
+```
 
 ### 2.6.2 处理二维数组的元素
 
@@ -266,6 +292,7 @@ JavaScript 只支持一维数组，二维数组使用数组里保存数组的方
 
 ## 2.9 练习
 
+---
 
 [上一章 第1章 JavaScript 的编程环境和模型](../1Environmnet and model)
 
