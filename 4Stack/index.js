@@ -130,3 +130,44 @@ function isPalindrome(word) {
 console.log(isPalindrome('123321')); // true
 console.log(isPalindrome('racecar')); // true
 console.log(isPalindrome('123')); // false
+
+////////////
+//模拟递归//
+////////////
+
+/**
+ * 递归的原始写法
+ * @param  {Number} n 数字
+ * @return {Number}   结果
+ */
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+/**
+ * 栈模拟递归
+ * @param  {Number} n 数字
+ * @return {Number}   结果
+ */
+function fact(n) {
+    var s = new Stack();
+    while (n > 1) {
+        s.push(n--);
+    }
+    var product = 1;
+    while (s.length() > 0) {
+        product *= s.pop();
+    }
+    return product;
+}
+
+///////////////////
+//-----test----- //
+///////////////////
+
+console.log(fact(5)); //120
+console.log(factorial(5)); //120

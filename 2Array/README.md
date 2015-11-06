@@ -292,6 +292,8 @@ Array.matrix = function(numrows,numcols,initial) {
 
 ## 2.9 练习
 
+有空会补上的。
+
 ---
 
 [上一章 第1章 JavaScript 的编程环境和模型](../1Environmnet and model)

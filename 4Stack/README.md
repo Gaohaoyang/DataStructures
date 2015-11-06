@@ -187,4 +187,57 @@ console.log(isPalindrome('123')); // false
 
 ### 4.3.3 递归演示
 
+这里使用栈模拟阶乘。
+
+```js
+/**
+ * 递归的原始写法
+ * @param  {Number} n 数字
+ * @return {Number}   结果
+ */
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+```
+
+这里使用栈模拟递归，首先将数字5到1压入栈，然后使用一个循环，将数字挨个弹出，得到结果。
+
+```js
+/**
+ * 栈模拟递归
+ * @param  {Number} n 数字
+ * @return {Number}   结果
+ */
+function fact(n) {
+    var s = new Stack();
+    while (n > 1) {
+        s.push(n--);
+    }
+    var product = 1;
+    while (s.length() > 0) {
+        product *= s.pop();
+    }
+    return product;
+}
+
+///////////////////
+//-----test----- //
+///////////////////
+
+console.log(fact(5)); //120
+console.log(factorial(5)); //120
+```
+
 ## 4.4 练习
+
+有空会补上的。
+
+---
+
+[上一章 第3章 列表](../3List)
+
+[下一章 第5章 队列](../5Queue)

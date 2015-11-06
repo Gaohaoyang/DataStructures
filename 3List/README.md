@@ -251,6 +251,8 @@ for (list.end(); list.currPos() >= 0; list.prev()) {
 
 ## 3.5 练习
 
+有空会补上的。
+
 ---
 
 [上一章 第2章 数组](../2Array)
