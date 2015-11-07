@@ -6,3 +6,4 @@ Data Structures and Algorithms with JavaScript
 * [第2章 数组](2Array)
 * [第3章 列表](3List)
 * [第4章 栈](4Stack)
+* [第5章 队列](5Queue)
